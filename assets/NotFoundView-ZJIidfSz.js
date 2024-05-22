@@ -1,1 +1,0 @@
-import{_ as o,c as e,o as t,a as s}from"./index-CbmzBF8b.js";const c={},n={class:"about"},_=s("h1",null,"404 Not found",-1),a=[_];function r(d,i){return t(),e("div",n,a)}const l=o(c,[["render",r]]);export{l as default};
