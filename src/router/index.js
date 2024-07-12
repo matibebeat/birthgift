@@ -20,12 +20,19 @@ const router = createRouter({
     {
       path: '/admin',
       name: 'admin',
-        component: () => import('../views/AdminView.vue')
+        component: () => import('../views/AdminView.vue'),
+      meta: { requiresAuth: true }
+
     },
     {
       path:'/article/:id',
         name: 'article',
         component: () => import('../views/ArticleView.vue')
+    },
+    {
+      path:'/login',
+      name:'login',
+      component : () => import('../views/LoginView.vue')
     },
     {
       path:'/success',
@@ -36,8 +43,37 @@ const router = createRouter({
         path: '/:pathMatch(.*)*',
         name: 'not-found',
         component: () => import('../views/NotFoundView.vue')
+    },
+    {
+      path:'/messages',
+        name:'messages',
+        component: () => import('../views/MessagesView.vue'),
+    },
+    {
+      path:'/redirect/:id',
+     redirect: (to) => {
+       window.location.href.replace(to.params.id);
+       return '/redirecting';
+     }
+
     }
   ]
 })
+
+
+router.beforeEach((to,from,next) =>{
+ if(to.meta.requiresAuth){
+   const token = localStorage.getItem('token');
+   if(token){
+     next();
+   }else{
+  next('/login');
+   }
+ }else{
+   next();
+ }
+})
+
+
 
 export default router

@@ -12,17 +12,19 @@ export default {
 
 <style scoped>
 a {
-  background-color: #77AFFC;
-  border: none;
+
+  background-color: white;
+  border: #77AFFC 3px solid;
   color: black;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 4px auto;
   cursor: pointer;
   border-radius: 12px;
   padding: 16px 32px;
+  width: 75%;
 }
 
 a:hover {
